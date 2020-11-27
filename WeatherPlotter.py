@@ -22,7 +22,7 @@ class WeatherPlotter:
         plt.show()
 
     def plotPolar(self, series1, series2, title = '', xLabel = '', yLabel = '', legend = []):
-        plt.polar(series1, series2)
+        plt.polar(series1, series2, 'o')
 
         # for i in range(len(series1)):
         #     plt.polar(series1[i], series2[i])

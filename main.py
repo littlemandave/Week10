@@ -16,7 +16,7 @@ def main():
     print('-' * numDashes)
     print()
 
-    numPoints = 20
+    numPoints = 10
 
     # Get the last numPoints wind direction (field1) and speed (field2) samples
     getter = wg.WeatherGetter()
@@ -25,14 +25,17 @@ def main():
     # print(speedData)
     # print(dirData)
 
-    title = "Plot of Wind speed in Natick, Ma using past {} data points".format(numPoints)
+    title = "Plot of Wind direction and speed in Natick, MA using past {} data points".format(numPoints)
     plotter = wp.WeatherPlotter()
 #    plotter.plotData(speedData, title, "Daily values", "Wind speed (mph)")
-    # convert dirData to radians
-    radData = []
-    for dir in dirData:
-        rad = (((dir * -1) * np.pi) / 180) + (2 * np.pi)
-        radData.append(rad)
+
+    # convert dirData to radians. Note we're using numpy-style notation here:
+    # operation is performed on the entire array
+    radData = (((dirData * -1) * np.pi) / 180) + (2 * np.pi)
+    # radData = []
+    # for dir in dirData:
+    #     rad = (((dir * -1) * np.pi) / 180) + (2 * np.pi)
+    #     radData.append(rad)
 
     plotter.plotPolar(radData, speedData, title, "Daily values", "Wind speed (mph)")
 
