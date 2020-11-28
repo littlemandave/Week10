@@ -37,8 +37,9 @@ class WeatherGetter:
          # build the url, then read the data from the URL into a dataframe using pandas, and return the series
         self.buildURL(index, numPoints)
         dataFrame = pd.read_csv(self.dataURL)
-        index = 'field' + str(index)  # creating column index needed 'fieldX' for the data
-        data = dataFrame[index]  # indexing into the file for the column index
-        return data
+        return dataFrame
+        # index = 'field' + str(index)  # creating column index 'fieldX' for the data
+        # data = dataFrame[index]  # indexing into the file for the column index
+        # return data
 
 
